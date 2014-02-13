@@ -1,21 +1,15 @@
 package tc.srm.srm597;
 
-import java.util.Stack;
-
 public class LittleElephantAndDouble {
 
 	public static String getAnswer(int[] A) {
 		int len = A.length;
 		int min = Integer.MAX_VALUE;
-		// Find the min value but one
 		for (int i = 1; i < len; i++) {
 			if (A[i] <= min && A[i] != 1) {
 				min = A[i];
 			}
 		}
-		// If any number > 1 we...
-		// !!!!!!!!!!!!!! Big bug here
-		// Although this solution pass through the tests, the pair 1, 3 passes too!!! should avoid this!!!!!!!!
 		for (int i = 0; i < A.length; i++) {
 			if (A[i] % min != 0 && A[i] != 1) {
 				return "NO";
@@ -24,6 +18,7 @@ public class LittleElephantAndDouble {
 				A[i] /= min;
 			}
 		}
+
 		boolean changed;
 		do {
 			changed = false;
@@ -55,4 +50,5 @@ public class LittleElephantAndDouble {
 		input = new int[] { 7, 7, 7, 7 };
 		System.out.println(getAnswer(input));
 	}
+
 }
